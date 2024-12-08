@@ -1,22 +1,28 @@
-<div class="p-6">
-  <h2 class="text-xl font-semibold mb-4">Redes Sociales Profesionales</h2>
-  <ul class="list-none">
-    <li><a href="https://linkedin.com/in/nicolas" target="_blank" class="text-blue-500 hover:underline">LinkedIn</a></li>
-    <li><a href="https://github.com/nicolas" target="_blank" class="text-blue-500 hover:underline">GitHub</a></li>
-  </ul>
-
-  <h2 class="text-xl font-semibold mt-6 mb-4">Formulario de Contacto</h2>
-  <form (ngSubmit)="onSubmit()" class="p-6 max-w-lg mx-auto bg-white rounded-lg shadow-lg">
-    <div class="mb-4">
-      <label for="email" class="block text-sm font-medium">Correo Electrónico</label>
-      <input type="email" id="email" [(ngModel)]="email" name="email" required class="mt-1 w-full p-2 border border-gray-300 rounded-md">
-    </div>
-    <div class="mb-4">
-      <label for="message" class="block text-sm font-medium">Mensaje</label>
-      <textarea id="message" [(ngModel)]="message" name="message" required class="mt-1 w-full p-2 border border-gray-300 rounded-md"></textarea>
-    </div>
-    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Enviar</button>
-    <div *ngIf="isSending" class="mt-2 text-blue-500">Enviando...</div>
-    <div *ngIf="messageSent" class="mt-2 text-green-500">¡Mensaje enviado correctamente!</div>
-  </form>
-</div>
+<form (submit)="onSubmit($event)" class="p-6 max-w-lg mx-auto bg-white rounded-lg shadow-lg">
+  <div class="mb-4">
+    <label for="email" class="block text-sm font-medium">Correo Electrónico</label>
+    <input
+      type="email"
+      id="email"
+      required
+      [value]="email"
+      (input)="onInputEmail($event)"
+      class="mt-1 w-full p-2 border border-gray-300 rounded-md"
+    />
+  </div>
+  <div class="mb-4">
+    <label for="message" class="block text-sm font-medium">Mensaje</label>
+    <textarea
+      id="message"
+      required
+      [value]="message"
+      (input)="onInputMessage($event)"
+      class="mt-1 w-full p-2 border border-gray-300 rounded-md"
+    ></textarea>
+  </div>
+  <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+    Enviar
+  </button>
+  <div *ngIf="isSending" class="mt-2 text-blue-500">Enviando...</div>
+  <div *ngIf="messageSent" class="mt-2 text-green-500">¡Mensaje enviado correctamente!</div>
+</form>
