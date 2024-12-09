@@ -1,0 +1,7 @@
+form {
+  background-color: #f9fafb;
+}
+
+button {
+  transition: background-color 0.3s;
+}
